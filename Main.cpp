@@ -1,12 +1,15 @@
 #include "Portfolio.h"
+#include "BoucingBallProgram.h"
 #include "GridProgram.h"
 
 int main()
 {
 	Portfolio p;
 
-	GridProgram gridProgram;
-	p.addProgram(gridProgram);
+	BoucingBallProgram bbp;
+	GridProgram gp;
+	p.addProgram(bbp);
+	p.addProgram(gp);
 
 	p.run();
 

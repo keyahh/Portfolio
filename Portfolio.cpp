@@ -4,6 +4,7 @@
 Portfolio::Portfolio(sf::VideoMode videoMode, std::string windowName)
 {
 	window.create(videoMode, windowName);
+	window.setFramerateLimit(60);
 }
 
 void Portfolio::run()

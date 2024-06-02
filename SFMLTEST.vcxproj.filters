@@ -75,8 +75,17 @@
     <ClCompile Include="GridProgram.cpp">
       <Filter>Source Files\2DArray</Filter>
     </ClCompile>
-    <ClCompile Include="2DArray\SFMLGrid.cpp">
+    <ClCompile Include="Grid\SFMLGrid.cpp">
       <Filter>Source Files\2DArray</Filter>
+    </ClCompile>
+    <ClCompile Include="BoucingBallProgram.cpp">
+      <Filter>Source Files\BouncingBall</Filter>
+    </ClCompile>
+    <ClCompile Include="BouncingBall\Ball.cpp">
+      <Filter>Source Files\BouncingBall</Filter>
+    </ClCompile>
+    <ClCompile Include="BouncingBall\BouncingBall.cpp">
+      <Filter>Source Files\BouncingBall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,11 +110,20 @@
     <ClInclude Include="Helper\Position.h">
       <Filter>Header Files\Helper</Filter>
     </ClInclude>
-    <ClInclude Include="2DArray\SFMLGrid.h">
-      <Filter>Header Files\2DArray</Filter>
-    </ClInclude>
     <ClInclude Include="GridProgram.h">
       <Filter>Header Files\2DArray</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid\SFMLGrid.h">
+      <Filter>Header Files\2DArray</Filter>
+    </ClInclude>
+    <ClInclude Include="BoucingBallProgram.h">
+      <Filter>Header Files\BouncingBall</Filter>
+    </ClInclude>
+    <ClInclude Include="BouncingBall\Ball.h">
+      <Filter>Header Files\BouncingBall</Filter>
+    </ClInclude>
+    <ClInclude Include="BouncingBall\BouncingBall.h">
+      <Filter>Header Files\BouncingBall</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

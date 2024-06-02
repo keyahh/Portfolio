@@ -136,8 +136,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="2DArray\SFMLGrid.cpp" />
+    <ClCompile Include="BoucingBallProgram.cpp" />
+    <ClCompile Include="BouncingBall\Ball.cpp" />
+    <ClCompile Include="BouncingBall\BouncingBall.cpp" />
     <ClCompile Include="GridProgram.cpp" />
+    <ClCompile Include="Grid\SFMLGrid.cpp" />
     <ClCompile Include="Helper\Button.cpp" />
     <ClCompile Include="Helper\Fonts.cpp" />
     <ClCompile Include="Helper\MouseEvents.cpp" />
@@ -147,8 +150,11 @@
     <ClCompile Include="Program.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="2DArray\SFMLGrid.h" />
+    <ClInclude Include="BoucingBallProgram.h" />
+    <ClInclude Include="BouncingBall\Ball.h" />
+    <ClInclude Include="BouncingBall\BouncingBall.h" />
     <ClInclude Include="GridProgram.h" />
+    <ClInclude Include="Grid\SFMLGrid.h" />
     <ClInclude Include="Helper\Button.h" />
     <ClInclude Include="Helper\ColorPalette.h" />
     <ClInclude Include="Helper\Fonts.h" />

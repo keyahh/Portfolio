@@ -1,13 +1,13 @@
-#ifndef GRIDPROGRAMH
-#define GRIDPROGRAMH
+#ifndef BOUNCINGBALLPROGRAMH
+#define BOUNCINGBALLPROGRAMH
 
-#include "Grid/SFMLGrid.h"
 #include "Program.h"
+#include "BouncingBall/BouncingBall.h"
 
-class GridProgram : public Program
+class BoucingBallProgram : public Program
 {
 private:
-    SFMLGrid grid;
+    BouncingBall bb;
 
 public:
     virtual void eventHandler(sf::RenderWindow& window, sf::Event event, float dt);
