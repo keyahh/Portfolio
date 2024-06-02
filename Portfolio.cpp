@@ -16,6 +16,8 @@ void Portfolio::run()
 
 		dt = clock.restart().asSeconds();
 
+		left.update(dt);
+		right.update(dt);
 		(*iter)->update(dt);
 		
 		render();
@@ -43,13 +45,15 @@ void Portfolio::eventHandler(sf::RenderWindow& window, sf::Event event)
 			window.close();
 		}
 
-		if (MouseEvents::isClicked(left, window))
+		if (left.getClicked())
 		{
 			moveLeft();
+			left.setClicked(false);
 		}
-		if (MouseEvents::isClicked(right, window))
+		if (right.getClicked())
 		{
 			moveRight();
+			right.setClicked(false);
 		}
 	}
 }
@@ -57,9 +61,7 @@ void Portfolio::eventHandler(sf::RenderWindow& window, sf::Event event)
 void Portfolio::render()
 {
 	window.clear();
-	texture.clear(sf::Color::Blue);
-
-	//window.draw(display);
+	texture.clear();
 
 	texture.draw(*(*iter));
 	display.setTexture(texture.getTexture());
