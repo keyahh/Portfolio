@@ -19,6 +19,36 @@
     <Filter Include="Source Files\Helper">
       <UniqueIdentifier>{fb120fdc-981e-49a4-999a-972de8411b17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\BouncingBall">
+      <UniqueIdentifier>{a62a55c0-1543-49b9-80ee-973b25482e4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\2DArray">
+      <UniqueIdentifier>{ea3075b0-eb49-49c3-9634-d24e33e65179}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Poker">
+      <UniqueIdentifier>{7fdd0231-79ab-4d24-9c57-069a6bea3fa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{ce52557a-3366-4a04-a9a5-115ae59dad30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BouncingBall">
+      <UniqueIdentifier>{8c436199-640b-4589-99a7-4fa6f94e315a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\2DArray">
+      <UniqueIdentifier>{e04c9b01-6077-47ec-92a1-95ce4cc26920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Poker">
+      <UniqueIdentifier>{57ade804-1491-4bda-a92d-0f8ded7eef40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{726d1e97-008b-492b-8f02-6318cec9386e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Calculator">
+      <UniqueIdentifier>{22db02f2-3ea7-47e7-829f-d04677ecad1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Calculator">
+      <UniqueIdentifier>{2e362030-5a5d-4917-84f8-2c6c1405dff5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -42,6 +72,12 @@
     <ClCompile Include="Helper\Position.cpp">
       <Filter>Source Files\Helper</Filter>
     </ClCompile>
+    <ClCompile Include="GridProgram.cpp">
+      <Filter>Source Files\2DArray</Filter>
+    </ClCompile>
+    <ClCompile Include="2DArray\SFMLGrid.cpp">
+      <Filter>Source Files\2DArray</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Portfolio.h">
@@ -64,6 +100,12 @@
     </ClInclude>
     <ClInclude Include="Helper\Position.h">
       <Filter>Header Files\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="2DArray\SFMLGrid.h">
+      <Filter>Header Files\2DArray</Filter>
+    </ClInclude>
+    <ClInclude Include="GridProgram.h">
+      <Filter>Header Files\2DArray</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

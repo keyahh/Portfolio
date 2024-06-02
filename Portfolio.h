@@ -28,6 +28,7 @@ class Portfolio
     void setupIter();
     void moveLeft();
     void moveRight();
+    void updateTitle();
 
 public:
     Portfolio(sf::VideoMode videoMode = { 1920, 1080 }, std::string windowName = "Portfolio");

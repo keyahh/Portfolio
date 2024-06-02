@@ -35,9 +35,23 @@ Button::Button(const std::string& text, const sf::Font& font, float buttonRadius
 {
 	this->text.setFont(font);
 	this->text.setString(text);
-	this->text.setFillColor(sf::Color::White);
+	this->text.setFillColor(textColor);
 
 	sf::CircleShape::setFillColor(defaultColor);
+	sf::CircleShape::setRadius(buttonRadius);
+}
+
+void Button::create(const std::string& text, const sf::Font& font, float buttonRadius, const sf::Color& defaultColor, const sf::Color& hoverColor, const sf::Color& textColor, int fontSize)
+{
+	this->defaultColor = defaultColor;
+	this->hoverColor = hoverColor;
+	
+	this->text.setFont(font);
+	this->text.setString(text);
+	this->text.setFillColor(textColor);
+
+	sf::CircleShape::setFillColor(defaultColor);
+	sf::CircleShape::setRadius(buttonRadius);
 }
 
 void Button::eventHandler(sf::RenderWindow& window, sf::Event event, float dt)
@@ -54,12 +68,8 @@ void Button::eventHandler(sf::RenderWindow& window, sf::Event event, float dt)
 	if (MouseEvents::isClicked(*this, window) && canClick)
 	{
 		clicked = true;
+		canClick = false;
 	}
-}
-
-const std::string& Button::getValue() const
-{
-	return text.getString();
 }
 
 void Button::draw(sf::RenderTarget& window, sf::RenderStates states) const
@@ -80,7 +90,7 @@ void Button::update(float dt)
 	clickTime += dt;
 	if (clickTime >= clickCoolDown)
 	{
-		clickTime = 0;
+		clickTime = 0.f;
 		canClick = true;
 		clicked = false;
 	}
@@ -95,6 +105,26 @@ void Button::setDefaultColor(const sf::Color& defaultColor)
 void Button::setHoverColor(const sf::Color& hoverColor)
 {
 	Button::hoverColor = hoverColor;
+}
+
+bool Button::getClicked() const
+{
+	return clicked;
+}
+
+void Button::setClicked(bool flag)
+{
+	clicked = flag;
+}
+
+void Button::setCanClick(bool flag)
+{
+	canClick = flag;
+}
+
+const sf::String& Button::getString() const
+{
+	return text.getString();
 }
 
 void Button::centerText()

@@ -17,6 +17,9 @@ public:
 
 	template <typename T, typename S>
 	static void bottom(const T& constObj, S& obj, float spacing = 0);
+
+	template <typename T, typename S>
+	static void center(const T& constObj, S& obj);
 };
 
 #include "Position.cpp"
