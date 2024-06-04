@@ -39,4 +39,10 @@ void Position::bottom(const T& constObj, S& obj, float spacing)
 	obj.setPosition(pos);
 }
 
+template<typename T, typename S>
+void Position::center(const T& constObj, S& obj)
+{
+	obj.setPosition(constObj.getGlobalBounds().left + (constObj.getGlobalBounds().width / 2) - (obj.getGlobalBounds().width / 2), constObj.getGlobalBounds().top + (constObj.getGlobalBounds().height / 2) - (obj.getGlobalBounds().height / 2));
+}
+
 #endif
