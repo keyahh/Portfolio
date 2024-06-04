@@ -20,11 +20,8 @@ private:
 
 public:
 	Button();
-	Button(const std::string& text, const sf::Font& font);
 	Button(const std::string& text, const sf::Font& font, const sf::Color& defaultColor);
 	Button(const std::string& text, const sf::Font& font, const sf::Color& defaultColor, const sf::Color& hoverColor);
-	Button(const std::string& text, const sf::Font& font, float buttonRadius = 50);
-	Button(const std::string& text, const sf::Font& font, float buttonRadius = 50, int fontSize = 30, const sf::Color& textColor = sf::Color::White, const sf::Color& defaultColor = ColorPalette::charcoal);
 	Button(const std::string& text, const sf::Font& font, float buttonRadius = 50, const sf::Color& defaultColor = ColorPalette::charcoal, const sf::Color& hoverColor = ColorPalette::lightGray, const sf::Color& textColor = sf::Color::White, int fontSize = 30);
 
 	void create(const std::string& text, const sf::Font& font, float buttonRadius = 50, const sf::Color& defaultColor = ColorPalette::charcoal, const sf::Color& hoverColor = ColorPalette::lightGray, const sf::Color& textColor = sf::Color::White, int fontSize = 30);

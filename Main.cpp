@@ -1,6 +1,7 @@
 #include "Portfolio.h"
 #include "BoucingBallProgram.h"
 #include "GridProgram.h"
+#include "CalculatorProgram.h"
 
 int main()
 {
@@ -8,8 +9,11 @@ int main()
 
 	BoucingBallProgram bbp;
 	GridProgram gp;
+	CalculatorProgram c;
+
 	p.addProgram(bbp);
 	p.addProgram(gp);
+	p.addProgram(c);
 
 	p.run();
 

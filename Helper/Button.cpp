@@ -4,11 +4,6 @@ Button::Button()
 {
 }
 
-Button::Button(const std::string& text, const sf::Font& font)
-	: Button(text, font, 50, ColorPalette::charcoal, ColorPalette::lightGray, sf::Color::White, 80)
-{
-}
-
 Button::Button(const std::string& text, const sf::Font& font, const sf::Color& defaultColor)
 	: Button(text, font, 50, defaultColor, ColorPalette::lightGray, sf::Color::White, 80)
 {
@@ -16,17 +11,6 @@ Button::Button(const std::string& text, const sf::Font& font, const sf::Color& d
 
 Button::Button(const std::string& text, const sf::Font& font, const sf::Color& defaultColor, const sf::Color& hoverColor)
 	: Button(text, font, 50, defaultColor, hoverColor, sf::Color::White, 80)
-{
-}
-
-
-Button::Button(const std::string& text, const sf::Font& font, float buttonRadius)
-	: Button(text, font, buttonRadius, ColorPalette::charcoal, ColorPalette::lightGray, sf::Color::White, 80)
-{
-}
-
-Button::Button(const std::string& text, const sf::Font& font, float buttonRadius, int fontSize, const sf::Color& textColor, const sf::Color& defaultColor)
-	: Button(text, font, buttonRadius, defaultColor, ColorPalette::lightGray, textColor, 80)
 {
 }
 

@@ -139,6 +139,13 @@
     <ClCompile Include="BoucingBallProgram.cpp" />
     <ClCompile Include="BouncingBall\Ball.cpp" />
     <ClCompile Include="BouncingBall\BouncingBall.cpp" />
+    <ClCompile Include="CalculatorProgram.cpp" />
+    <ClCompile Include="Calculator\Calculator.cpp" />
+    <ClCompile Include="Calculator\Display.cpp" />
+    <ClCompile Include="Calculator\InvalidPostfixExpressionException.cpp" />
+    <ClCompile Include="Calculator\Postfix.cpp" />
+    <ClCompile Include="Calculator\RPN.cpp" />
+    <ClCompile Include="Calculator\Term.cpp" />
     <ClCompile Include="GridProgram.cpp" />
     <ClCompile Include="Grid\SFMLGrid.cpp" />
     <ClCompile Include="Helper\Button.cpp" />
@@ -153,6 +160,13 @@
     <ClInclude Include="BoucingBallProgram.h" />
     <ClInclude Include="BouncingBall\Ball.h" />
     <ClInclude Include="BouncingBall\BouncingBall.h" />
+    <ClInclude Include="CalculatorProgram.h" />
+    <ClInclude Include="Calculator\Calculator.h" />
+    <ClInclude Include="Calculator\Display.h" />
+    <ClInclude Include="Calculator\InvalidPostfixExpressionException.h" />
+    <ClInclude Include="Calculator\Postfix.h" />
+    <ClInclude Include="Calculator\RPN.h" />
+    <ClInclude Include="Calculator\Term.h" />
     <ClInclude Include="GridProgram.h" />
     <ClInclude Include="Grid\SFMLGrid.h" />
     <ClInclude Include="Helper\Button.h" />
