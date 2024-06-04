@@ -64,7 +64,7 @@ void Portfolio::render()
 void Portfolio::init()
 {
 	setupIter();
-	setupDisplay();
+	//setupDisplay();
 	setupButtons();
 	setupTitle();
 }
