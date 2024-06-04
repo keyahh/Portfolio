@@ -71,6 +71,6 @@ Term RPN::evaluate(const Postfix& equation)
     catch (InvalidPostfixExpressionException invalidPFE)
     {
         std::cout << invalidPFE.what();
-        return Term();
+        return Term(' ');
     }
 }

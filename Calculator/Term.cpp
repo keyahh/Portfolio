@@ -9,16 +9,17 @@ Term::Term()
 }
 
 Term::Term(double x)
+	: num(x)
 {
-	num = x;
 }
 
 Term::Term(char c)
+	: op(c)
 {
-	if (c == '+' || c == '-' || c == '*' || c == '/'|| c == '^')
-	{
-		op = c;
-	}
+	//if (c == '+' || c == '-' || c == '*' || c == '/'|| c == '^')
+	//{
+	//	op = c;
+	//}
 }
 
 Term::Term(const std::string& str)
@@ -37,7 +38,7 @@ bool Term::checkIsNum(const std::string& str)
 	}
 	for (int i = 0; i < str.size(); i++)
 	{
-		if (!isdigit(str[i]))
+		if (!isdigit(str[i]) && str[i] != '.')
 			return false;
 	}
 	return true;

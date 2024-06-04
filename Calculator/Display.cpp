@@ -126,12 +126,16 @@ void Display::update(float dt)
 	}
 }
 
-
 void Display::inputRPN()
 {
 	Postfix pf(text.getString());
 	Term ans = RPN::evaluate(pf);
-	text.setString(std::to_string(ans.getNumber()));
+	if (ans.getOp() == ' ')
+	{
+		clear();
+	}
+	else
+		text.setString(std::to_string(ans.getNumber()));
 }
 
 void Display::clear()

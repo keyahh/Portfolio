@@ -37,7 +37,7 @@ void Portfolio::eventHandler(sf::RenderWindow& window, sf::Event event)
 	if (window.pollEvent(event))
 	{
 		(*iter)->eventHandler(window, event, dt);
-
+		
 		left.eventHandler(window, event, dt);
 		right.eventHandler(window, event, dt);
 

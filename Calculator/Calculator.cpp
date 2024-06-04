@@ -23,10 +23,7 @@ void Calculator::createButtons()
 {
 	for (auto& bk : buttonKeys)
 	{
-		//bk is string
-		//buttons.push_back(Button(bk, Fonts::getFont(Fonts::OPEN_SANS_REGULAR)));
-
-		buttons.push_back(Button(bk, Fonts::getFont(Fonts::OPEN_SANS_REGULAR)));
+		buttons.push_back(Button(bk, Fonts::getFont(Fonts::OPEN_SANS_REGULAR), 40));
 	}
 
 	for (int i = 0; i < buttons.size(); i++) //set colors
@@ -108,8 +105,6 @@ void Calculator::eventHandler(sf::RenderWindow& window, sf::Event event, float d
 
 void Calculator::draw(sf::RenderTarget& window, sf::RenderStates states) const
 {
-	//sf::RectangleShape background = *this;
-	//window.draw(background);
 	for (auto& i : buttons)
 	{
 		window.draw(i);
