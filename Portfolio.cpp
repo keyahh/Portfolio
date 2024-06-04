@@ -62,7 +62,7 @@ void Portfolio::eventHandler(sf::RenderWindow& window, sf::Event event)
 void Portfolio::render()
 {
 	window.clear();
-	texture.clear();
+	texture.clear( );
 
 	texture.draw(*(*iter));
 	display.setTexture(texture.getTexture());
@@ -79,7 +79,7 @@ void Portfolio::render()
 void Portfolio::init()
 {
 	setupIter();
-	//setupDisplay();
+	setupDisplay();
 	setupButtons();
 	setupTitle();
 }
@@ -118,6 +118,7 @@ void Portfolio::updateTitle()
 void Portfolio::setupIter()
 {
 	iter = programs.begin();
+	//iter = programs.end() - 1;
 }
 
 void Portfolio::moveLeft()
@@ -126,7 +127,7 @@ void Portfolio::moveLeft()
 	{
 		if (iter == programs.begin())
 		{
-			iter = programs.end();
+			iter = programs.end() - 1;
 		}
 		else
 		{
@@ -140,7 +141,7 @@ void Portfolio::moveRight()
 {
 	if (programs.size() > 1)
 	{
-		if (iter == programs.end())
+		if (iter == programs.end() - 1)
 		{
 			iter = programs.begin();
 		}
