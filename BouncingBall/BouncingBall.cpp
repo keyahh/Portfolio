@@ -20,7 +20,7 @@ void BouncingBall::eventHandler(sf::RenderWindow& window, sf::Event& event)
 {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
-        balls.push_back(Ball({ windowSize.x - padding * 2, windowSize.y - padding * 3 }, sf::Mouse::getPosition(window)));
+        balls.push_back(Ball({ windowSize.x - padding * 2, windowSize.y - padding * 3 }, sf::Mouse::getPosition(window) - sf::Vector2i(padding, padding)));
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))

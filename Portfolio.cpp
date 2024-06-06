@@ -36,10 +36,10 @@ void Portfolio::eventHandler(sf::RenderWindow& window, sf::Event event)
 {
 	if (window.pollEvent(event))
 	{
-		(*iter)->eventHandler(window, event, dt);
+		(*iter)->eventHandler(window, event, dt, padding);
 		
-		left.eventHandler(window, event, dt);
-		right.eventHandler(window, event, dt);
+		left.eventHandler(window, event, dt, 0);
+		right.eventHandler(window, event, dt, 0);
 
 		if (event.type == sf::Event::Closed)
 		{
@@ -62,7 +62,7 @@ void Portfolio::eventHandler(sf::RenderWindow& window, sf::Event event)
 void Portfolio::render()
 {
 	window.clear();
-	texture.clear( );
+	texture.clear(sf::Color::Blue);
 
 	texture.draw(*(*iter));
 	display.setTexture(texture.getTexture());

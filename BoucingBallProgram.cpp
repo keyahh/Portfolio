@@ -1,6 +1,6 @@
 #include "BoucingBallProgram.h"
 
-void BoucingBallProgram::eventHandler(sf::RenderWindow& window, sf::Event event, float dt)
+void BoucingBallProgram::eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad)
 {
     bb.eventHandler(window, event);
 }

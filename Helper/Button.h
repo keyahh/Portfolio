@@ -26,7 +26,7 @@ public:
 
 	void create(const std::string& text, const sf::Font& font, float buttonRadius = 50, const sf::Color& defaultColor = ColorPalette::charcoal, const sf::Color& hoverColor = ColorPalette::lightGray, const sf::Color& textColor = sf::Color::White, int fontSize = 30);
 
-	void eventHandler(sf::RenderWindow& window, sf::Event event, float dt);
+	void eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad = 0);
 
 	virtual void draw(sf::RenderTarget& window, sf::RenderStates states) const;
 	virtual void setPosition(const sf::Vector2f& position);

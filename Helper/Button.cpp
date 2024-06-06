@@ -38,9 +38,9 @@ void Button::create(const std::string& text, const sf::Font& font, float buttonR
 	sf::CircleShape::setRadius(buttonRadius);
 }
 
-void Button::eventHandler(sf::RenderWindow& window, sf::Event event, float dt)
+void Button::eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad)
 {
-	if (MouseEvents::isHovered(*this, window))
+	if (MouseEvents::isHovered(*this, window, pad))
 	{
 		sf::CircleShape::setFillColor(hoverColor);
 	}
@@ -49,7 +49,7 @@ void Button::eventHandler(sf::RenderWindow& window, sf::Event event, float dt)
 		sf::CircleShape::setFillColor(defaultColor);
 	}
 
-	if (MouseEvents::isClicked(*this, window) && canClick)
+	if (MouseEvents::isClicked(*this, window, pad) && canClick)
 	{
 		clicked = true;
 		canClick = false;

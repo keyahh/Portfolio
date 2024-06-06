@@ -28,9 +28,6 @@
     <Filter Include="Header Files\Poker">
       <UniqueIdentifier>{7fdd0231-79ab-4d24-9c57-069a6bea3fa6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Game">
-      <UniqueIdentifier>{ce52557a-3366-4a04-a9a5-115ae59dad30}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\BouncingBall">
       <UniqueIdentifier>{8c436199-640b-4589-99a7-4fa6f94e315a}</UniqueIdentifier>
     </Filter>
@@ -43,11 +40,14 @@
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{726d1e97-008b-492b-8f02-6318cec9386e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Calculator">
-      <UniqueIdentifier>{22db02f2-3ea7-47e7-829f-d04677ecad1d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Calculator">
       <UniqueIdentifier>{2e362030-5a5d-4917-84f8-2c6c1405dff5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{ce52557a-3366-4a04-a9a5-115ae59dad30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Calculator">
+      <UniqueIdentifier>{22db02f2-3ea7-47e7-829f-d04677ecad1d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +87,27 @@
     <ClCompile Include="BouncingBall\BouncingBall.cpp">
       <Filter>Source Files\BouncingBall</Filter>
     </ClCompile>
+    <ClCompile Include="Calculator\Calculator.cpp">
+      <Filter>Source Files\Calculator</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculatorProgram.cpp">
+      <Filter>Source Files\Calculator</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculator\InvalidPostfixExpressionException.cpp">
+      <Filter>Source Files\Calculator</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculator\Display.cpp">
+      <Filter>Source Files\Calculator</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculator\Postfix.cpp">
+      <Filter>Source Files\Calculator</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculator\RPN.cpp">
+      <Filter>Source Files\Calculator</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculator\Term.cpp">
+      <Filter>Source Files\Calculator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Portfolio.h">
@@ -124,6 +145,27 @@
     </ClInclude>
     <ClInclude Include="BouncingBall\BouncingBall.h">
       <Filter>Header Files\BouncingBall</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator\Term.h">
+      <Filter>Header Files\Calculator</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator\RPN.h">
+      <Filter>Header Files\Calculator</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator\Postfix.h">
+      <Filter>Header Files\Calculator</Filter>
+    </ClInclude>
+    <ClInclude Include="CalculatorProgram.h">
+      <Filter>Header Files\Calculator</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator\Calculator.h">
+      <Filter>Header Files\Calculator</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator\InvalidPostfixExpressionException.h">
+      <Filter>Header Files\Calculator</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator\Display.h">
+      <Filter>Header Files\Calculator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

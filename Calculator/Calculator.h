@@ -25,7 +25,7 @@ public:
 
 	void clear();
 	void update(float dt);
-	void eventHandler(sf::RenderWindow& window, sf::Event event, float dt);
+	void eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad);
 
 	virtual void draw(sf::RenderTarget& window, sf::RenderStates states) const;
 };

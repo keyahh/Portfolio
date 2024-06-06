@@ -71,11 +71,11 @@ void Calculator::update(float dt)
 	}
 }
 
-void Calculator::eventHandler(sf::RenderWindow& window, sf::Event event, float dt)
+void Calculator::eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad)
 {
 	for (auto& b : buttons)
 	{
-		b.eventHandler(window, event, dt);
+		b.eventHandler(window, event, dt, pad);
 
 		if (b.getClicked())
 		{

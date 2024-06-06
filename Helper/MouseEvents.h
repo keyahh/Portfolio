@@ -2,7 +2,7 @@
 #define MOUSEEVENTSH
 
 #include "SFML/Graphics.hpp"
-
+#include <iostream>
 class MouseEvents
 {
 public:

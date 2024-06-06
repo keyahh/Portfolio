@@ -1,8 +1,8 @@
 #include "CalculatorProgram.h"
 
-void CalculatorProgram::eventHandler(sf::RenderWindow& window, sf::Event event, float dt)
+void CalculatorProgram::eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad)
 {
-	c.eventHandler(window, event, dt);
+	c.eventHandler(window, event, dt, pad);
 }
 
 void CalculatorProgram::update(float dt)

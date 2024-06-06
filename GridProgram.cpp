@@ -1,6 +1,6 @@
 #include "GridProgram.h"
 
-void GridProgram::eventHandler(sf::RenderWindow& window, sf::Event event, float dt)
+void GridProgram::eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad)
 {
 	grid.eventHandler(window, event);
 }
