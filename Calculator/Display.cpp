@@ -108,9 +108,12 @@ void Display::getKeyboardInput()
 
 void Display::pop_back()
 {
-	std::string textStr = text.getString();
-	textStr.pop_back();
-	text.setString(textStr);
+	if(!text.getString().isEmpty())
+	{
+		std::string textStr = text.getString();
+		textStr.pop_back();
+		text.setString(textStr);
+	}
 }
 
 void Display::update(float dt)
@@ -128,14 +131,17 @@ void Display::update(float dt)
 
 void Display::inputRPN()
 {
-	Postfix pf(text.getString());
-	Term ans = RPN::evaluate(pf);
-	if (ans.getOp() == ' ')
+	if(!text.getString().isEmpty())
 	{
-		clear();
+		Postfix pf(text.getString());
+		Term ans = RPN::evaluate(pf);
+		if (ans.getOp() == ' ')
+		{
+			clear();
+		}
+		else
+			text.setString(std::to_string(ans.getNumber()));
 	}
-	else
-		text.setString(std::to_string(ans.getNumber()));
 }
 
 void Display::clear()
