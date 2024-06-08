@@ -108,6 +108,33 @@
     <ClCompile Include="Calculator\Term.cpp">
       <Filter>Source Files\Calculator</Filter>
     </ClCompile>
+    <ClCompile Include="Poker\Board.cpp">
+      <Filter>Source Files\Poker</Filter>
+    </ClCompile>
+    <ClCompile Include="Poker\Card.cpp">
+      <Filter>Source Files\Poker</Filter>
+    </ClCompile>
+    <ClCompile Include="Poker\CardHand.cpp">
+      <Filter>Source Files\Poker</Filter>
+    </ClCompile>
+    <ClCompile Include="Poker\CardHandScorer.cpp">
+      <Filter>Source Files\Poker</Filter>
+    </ClCompile>
+    <ClCompile Include="Poker\Deck.cpp">
+      <Filter>Source Files\Poker</Filter>
+    </ClCompile>
+    <ClCompile Include="Poker\DisplayCard.cpp">
+      <Filter>Source Files\Poker</Filter>
+    </ClCompile>
+    <ClCompile Include="Poker\PokerScoreCard.cpp">
+      <Filter>Source Files\Poker</Filter>
+    </ClCompile>
+    <ClCompile Include="Poker\PokerSpriteSheet.cpp">
+      <Filter>Source Files\Poker</Filter>
+    </ClCompile>
+    <ClCompile Include="Poker\TextBox.cpp">
+      <Filter>Source Files\Poker</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Portfolio.h">
@@ -166,6 +193,42 @@
     </ClInclude>
     <ClInclude Include="Calculator\Display.h">
       <Filter>Header Files\Calculator</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\Board.h">
+      <Filter>Header Files\Poker</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\Card.h">
+      <Filter>Header Files\Poker</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\CardHand.h">
+      <Filter>Header Files\Poker</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\CardHandScorer.h">
+      <Filter>Header Files\Poker</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\Deck.h">
+      <Filter>Header Files\Poker</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\DisplayCard.h">
+      <Filter>Header Files\Poker</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\PokerScoreCard.h">
+      <Filter>Header Files\Poker</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\PokerSpriteSheet.h">
+      <Filter>Header Files\Poker</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\Ranks.h">
+      <Filter>Header Files\Poker</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\Scores.h">
+      <Filter>Header Files\Poker</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\Suits.h">
+      <Filter>Header Files\Poker</Filter>
+    </ClInclude>
+    <ClInclude Include="Poker\TextBox.h">
+      <Filter>Header Files\Poker</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

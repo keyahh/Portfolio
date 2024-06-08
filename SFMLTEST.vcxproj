@@ -153,6 +153,15 @@
     <ClCompile Include="Helper\MouseEvents.cpp" />
     <ClCompile Include="Helper\Position.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Poker\Board.cpp" />
+    <ClCompile Include="Poker\Card.cpp" />
+    <ClCompile Include="Poker\CardHand.cpp" />
+    <ClCompile Include="Poker\CardHandScorer.cpp" />
+    <ClCompile Include="Poker\Deck.cpp" />
+    <ClCompile Include="Poker\DisplayCard.cpp" />
+    <ClCompile Include="Poker\PokerScoreCard.cpp" />
+    <ClCompile Include="Poker\PokerSpriteSheet.cpp" />
+    <ClCompile Include="Poker\TextBox.cpp" />
     <ClCompile Include="Portfolio.cpp" />
     <ClCompile Include="Program.cpp" />
   </ItemGroup>
@@ -174,6 +183,18 @@
     <ClInclude Include="Helper\Fonts.h" />
     <ClInclude Include="Helper\MouseEvents.h" />
     <ClInclude Include="Helper\Position.h" />
+    <ClInclude Include="Poker\Board.h" />
+    <ClInclude Include="Poker\Card.h" />
+    <ClInclude Include="Poker\CardHand.h" />
+    <ClInclude Include="Poker\CardHandScorer.h" />
+    <ClInclude Include="Poker\Deck.h" />
+    <ClInclude Include="Poker\DisplayCard.h" />
+    <ClInclude Include="Poker\PokerScoreCard.h" />
+    <ClInclude Include="Poker\PokerSpriteSheet.h" />
+    <ClInclude Include="Poker\Ranks.h" />
+    <ClInclude Include="Poker\Scores.h" />
+    <ClInclude Include="Poker\Suits.h" />
+    <ClInclude Include="Poker\TextBox.h" />
     <ClInclude Include="Portfolio.h" />
     <ClInclude Include="Program.h" />
   </ItemGroup>
