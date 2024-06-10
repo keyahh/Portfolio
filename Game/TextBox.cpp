@@ -17,6 +17,7 @@ TextBox::TextBox(const std::string& text, const sf::Font& font, const sf::Vector
 }
 
 TextBox::TextBox(const std::string& text, const sf::Font& font, const sf::Vector2f& boxSize, int fontSize, const sf::Color& textColor, const sf::Color& boxColor)
+	: defaultColor(boxColor)
 {
 	setSize(boxSize);
 	setFillColor(boxColor);
@@ -27,6 +28,7 @@ TextBox::TextBox(const std::string& text, const sf::Font& font, const sf::Vector
 
 void TextBox::create(const std::string& text, const sf::Font& font, const sf::Vector2f& boxSize, int fontSize, const sf::Color& textColor, const sf::Color& boxColor)
 {
+	defaultColor = boxColor;
 	setSize(boxSize);
 	setFillColor(boxColor);
 	TextBox::text = sf::Text(text, font, fontSize);
@@ -36,6 +38,14 @@ void TextBox::create(const std::string& text, const sf::Font& font, const sf::Ve
 
 void TextBox::eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad)
 {
+	if (MouseEvents::isHovered(*this, window, pad))
+	{
+		setFillColor(hoverColor);
+	}
+	else
+	{
+		setFillColor(defaultColor);
+	}
 	if (MouseEvents::isClicked(*this, window, pad) && canClick)
 	{
 		clicked = true;

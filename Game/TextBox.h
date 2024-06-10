@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include "../Helper/MouseEvents.h"
+#include "../Helper/ColorPalette.h"
 
 class TextBox : public sf::RectangleShape
 {
@@ -12,6 +13,7 @@ private:
 	sf::Text text;
 	sf::RenderWindow* window;
 
+	sf::Color defaultColor = sf::Color::Transparent, hoverColor = ColorPalette::darkGray;
 	bool canClick = true, clicked = false;
 	float clickCoolDown = 0.25, clickTime = 0;
 
@@ -25,7 +27,7 @@ public:
 
 	void create(const std::string& text, const sf::Font& font, const sf::Vector2f& boxSize, int fontSize, const sf::Color& textColor, const sf::Color& boxColor);
 
-	void eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad = 0);
+	void eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad = 100);
 
 	virtual void draw(sf::RenderTarget& window, sf::RenderStates states) const;
 	void setPosition(const sf::Vector2f& position, int alignment);
