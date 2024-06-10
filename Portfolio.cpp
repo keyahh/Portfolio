@@ -140,6 +140,8 @@ void Portfolio::moveLeft()
 		}
 		updateTitle();
 	}
+	//window.setView(window.getDefaultView());
+	texture.setView(texture.getDefaultView());
 }
 
 void Portfolio::moveRight()
@@ -156,4 +158,7 @@ void Portfolio::moveRight()
 		}
 		updateTitle();
 	}
+	//window.setView(window.getDefaultView());
+	texture.setView(texture.getDefaultView());
+
 }

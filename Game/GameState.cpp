@@ -422,6 +422,6 @@ void GameState::close()
 {
 	saveGame();
 	clearEntities();
-
+	
 	canClose = true;
 }
