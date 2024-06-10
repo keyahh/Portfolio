@@ -12,18 +12,18 @@ PokerSpriteSheet::PokerSpriteSheet(const std::string& imgPath, int rows, int col
 
 void PokerSpriteSheet::init(const std::string& imgPath, int rows, int cols)
 {
-	if (!texture.loadFromFile(imgPath))
-		exit(28);
-	int width = texture.getSize().x;
-	int height = texture.getSize().y;
+	/*if (!texture.loadFromFile(imgPath))
+		exit(28);*/
+	int width = Textures::getTexture(Textures::DECK)->getSize().x;
+	int height = Textures::getTexture(Textures::DECK)->getSize().y;
 
 	intRect.width = width / cols;
 	intRect.height = height / rows;
 	//pos defaults at 0,0
 
-	sprite.setTextureRect(intRect);
-	sprite.setTexture(texture);
-	//sprite.setScale(2.5, 2.5);
+	setTextureRect(intRect);
+	setTexture(*Textures::getTexture(Textures::DECK));
+	setScale(1.5, 1.5);
 }
 
 void PokerSpriteSheet::animate()
@@ -40,31 +40,21 @@ void PokerSpriteSheet::animate()
 				intRect.top = 0;
 			}
 		}
-		sprite.setTextureRect(intRect);
+		setTextureRect(intRect);
 		clock.restart();
 	}
-}
-
-void PokerSpriteSheet::draw(sf::RenderTarget& window, sf::RenderStates states) const
-{
-	window.draw(PokerSpriteSheet::sprite);
 }
 
 void PokerSpriteSheet::setIntRectPos(int x, int y)
 {
 	intRect.left = x;
 	intRect.top = y;
-	sprite.setTextureRect(intRect);
+	setTextureRect(intRect);
 }
 
 void PokerSpriteSheet::setRowCol(int row, int col)
 {
 	intRect.left = col * intRect.width;
 	intRect.top = row * intRect.height;
-	sprite.setTextureRect(intRect);
-}
-
-sf::Sprite& PokerSpriteSheet::getSprite()
-{
-	return sprite;
+	setTextureRect(intRect);
 }

@@ -62,7 +62,7 @@ void Portfolio::eventHandler(sf::RenderWindow& window, sf::Event event)
 void Portfolio::render()
 {
 	window.clear();
-	texture.clear(sf::Color::Blue);
+	texture.clear();
 
 	texture.draw(*(*iter));
 	display.setTexture(texture.getTexture());

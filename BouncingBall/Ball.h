@@ -12,10 +12,9 @@ private:
 
 public:
 	Ball();
-	Ball(const sf::Vector2u& windowSize);
-	Ball(const sf::Vector2u& windowSize, const sf::Vector2i& startPos);
-	Ball(const sf::Vector2f& velocity, const sf::Vector2u& windowSize);
-	Ball(const sf::Vector2f& velocity, const sf::Vector2u& windowSize, const sf::Color& color, float size, const sf::Vector2f& position);
+	Ball(const sf::Vector2f& windowSize);
+	Ball(const sf::Vector2f& windowSize, const sf::Vector2f& startPos);
+	Ball(const sf::Vector2f& velocity, const sf::Vector2f& windowSize, const sf::Color& color, float size, const sf::Vector2f& position);
 
 	void setVelocity(sf::Vector2f velocity);
 	void setWindowSize(sf::Vector2u& windowSize);

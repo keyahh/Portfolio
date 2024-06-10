@@ -1,12 +1,12 @@
 #ifndef POKERSPRITESHEET
 #define POKERSPRITESHEET
 #include "SFML/Graphics.hpp"
+#include "../Helper/Textures.h"
 #include <string>
 
-class PokerSpriteSheet : public sf::Drawable, public sf::Transformable
+class PokerSpriteSheet : public sf::Sprite
 {
 private:
-	sf::Sprite sprite; //need top, left, width, and height of card
 	sf::IntRect intRect; //gets moved around sprite sheet to display the section bounded
 	sf::Texture texture;
 	sf::Clock clock;
@@ -17,10 +17,8 @@ public:
 	PokerSpriteSheet(const std::string& imgPath, int rows, int cols);
 
 	void animate();
-	virtual void draw(sf::RenderTarget& window, sf::RenderStates states) const;
 
 	void setIntRectPos(int x, int y);
 	void setRowCol(int row, int col);
-	sf::Sprite& getSprite();
 };
 #endif

@@ -4,7 +4,7 @@ BouncingBall::BouncingBall(const sf::Vector2u& windowSize, int padding)
     : windowSize(windowSize), padding(padding)
 {
     srand(time(0));
-    balls.push_back(Ball({ windowSize.x - padding * 2, windowSize.y - padding * 3 }));
+    balls.push_back(Ball({ windowSize.x - padding * 2.f, static_cast<float>(windowSize.y - padding * 3.5f) }));
 }
 
 
@@ -20,7 +20,7 @@ void BouncingBall::eventHandler(sf::RenderWindow& window, sf::Event& event)
 {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
-        balls.push_back(Ball({ windowSize.x - padding * 2, windowSize.y - padding * 3 }, sf::Mouse::getPosition(window) - sf::Vector2i(padding, padding)));
+        balls.push_back(Ball({ windowSize.x - padding * 2.f, windowSize.y - padding * 3.5f }, (sf::Vector2f)sf::Mouse::getPosition(window) - sf::Vector2f(padding, padding)));
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))

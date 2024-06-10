@@ -1,10 +1,10 @@
-#ifndef TEXTBOX
-#define TEXTBOX
+#ifndef SCOREBOX
+#define SCOREBOX
 
 #include <SFML/Graphics.hpp>
 #include <string>
 
-class TextBox : public sf::RectangleShape
+class ScoreBox : public sf::RectangleShape
 {
 private:
 	sf::Text text;
@@ -13,8 +13,8 @@ private:
 	void alignLeft(const sf::Shape& obj, sf::Text& text);
 	
 public:
-	TextBox();
-	TextBox(const std::string& text, const sf::Font& font, const sf::Vector2f& size);
+	ScoreBox();
+	ScoreBox(const std::string& text, const sf::Font& font, const sf::Vector2f& size);
 
 	virtual void draw(sf::RenderTarget& window, sf::RenderStates states) const;
 	virtual void setPosition(const sf::Vector2f& position, int alignment);

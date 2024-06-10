@@ -1,31 +1,26 @@
 #include "Ball.h"
 
 Ball::Ball() 
-	: Ball(sf::Vector2f(1.0f, 1.0f), sf::Vector2u(1200, 800 ))
+	: Ball(sf::Vector2f(1.0f, 1.0f), sf::Vector2f(1200, 800 ))
 {
 	//Ball::velocity = { float(rand() % 15 - 7), float(rand() % 15 - 7 )};
 }
 
-Ball::Ball(const sf::Vector2u& windowSize)
+Ball::Ball(const sf::Vector2f& windowSize)
 	: Ball(sf::Vector2f( float(rand() % 30 + 20), float(rand() % 30 + 10) ), windowSize, sf::Color::Red, 40, {100, 100})
 {
 	sf::CircleShape::setFillColor(sf::Color(rand() % 256, rand() % 256, rand() % 256 ));
 	//Ball::velocity = { float(rand() % 80 + 60), float(rand() % 80 + 60) };
 }
 
-Ball::Ball(const sf::Vector2u& windowSize, const sf::Vector2i& startPos)
+Ball::Ball(const sf::Vector2f& windowSize, const sf::Vector2f& startPos)
 	: Ball(sf::Vector2f(float(rand() % 30 + 20), float(rand() % 30 + 10)), windowSize, sf::Color::Red, 40, sf::Vector2f(startPos))
 {
 	sf::CircleShape::setFillColor(sf::Color(rand() % 256, rand() % 256, rand() % 256));
 }
 
-Ball::Ball(const sf::Vector2f& velocity, const sf::Vector2u& windowSize)
-	: Ball(velocity, windowSize, { 255, 255, 255 }, 20.0f, { windowSize.x/2.0f,windowSize.y/2.0f })
-{
-}
 
-
-Ball::Ball(const sf::Vector2f& velocity, const sf::Vector2u& windowSize, const sf::Color& color, float radius, const sf::Vector2f& position)
+Ball::Ball(const sf::Vector2f& velocity, const sf::Vector2f& windowSize, const sf::Color& color, float radius, const sf::Vector2f& position)
 	: velocity(velocity), windowSize(windowSize)
 {
 	sf::CircleShape::setFillColor(color);

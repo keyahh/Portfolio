@@ -1,20 +1,46 @@
 #include "TextBox.h"
 
 TextBox::TextBox()
+	: window(nullptr)
 {
 	setSize({ 300, 50 });
 	setFillColor(sf::Color::White);
 }
 
 TextBox::TextBox(const std::string& text, const sf::Font& font, const sf::Vector2f& size)
-	:name(text)
 {
 	setSize(size);
 	setFillColor(sf::Color::White);
 	TextBox::text = sf::Text(text, font, 24);
 	TextBox::text.setFillColor(sf::Color::Black);
-	updateScore(0);
 	alignLeft(*this, TextBox::text);
+}
+
+TextBox::TextBox(const std::string& text, const sf::Font& font, const sf::Vector2f& boxSize, int fontSize, const sf::Color& textColor, const sf::Color& boxColor)
+{
+	setSize(boxSize);
+	setFillColor(boxColor);
+	TextBox::text = sf::Text(text, font, fontSize);
+	TextBox::text.setFillColor(textColor);
+	centerText(*this, TextBox::text);
+}
+
+void TextBox::create(const std::string& text, const sf::Font& font, const sf::Vector2f& boxSize, int fontSize, const sf::Color& textColor, const sf::Color& boxColor)
+{
+	setSize(boxSize);
+	setFillColor(boxColor);
+	TextBox::text = sf::Text(text, font, fontSize);
+	TextBox::text.setFillColor(textColor);
+	centerText(*this, TextBox::text);
+}
+
+void TextBox::eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad)
+{
+	if (MouseEvents::isClicked(*this, window, pad) && canClick)
+	{
+		clicked = true;
+		canClick = false;
+	}
 }
 
 void TextBox::alignLeft(const sf::Shape& obj, sf::Text& text)
@@ -54,6 +80,26 @@ void TextBox::setPosition(const sf::Vector2f& position)
 	alignLeft(*this, text);
 }
 
+bool TextBox::checkClick(sf::Window* window) const
+{
+	if (canClick) {
+		sf::Vector2f mousePos = (sf::Vector2f)sf::Mouse::getPosition(*window);
+		return getGlobalBounds().contains(mousePos) && sf::Mouse::isButtonPressed(sf::Mouse::Left);
+	}
+	return false;
+}
+
+void TextBox::update(float dt)
+{
+	clickTime += dt;
+	if (clickTime >= clickCoolDown)
+	{
+		clickTime = 0.f;
+		canClick = true;
+		clicked = false;
+	}
+}
+
 void TextBox::setText(const std::string& text)
 {
 	TextBox::text.setString(text);
@@ -65,17 +111,12 @@ void TextBox::setTextObj(const std::string& text, const sf::Font& font, int font
 	TextBox::text = sf::Text(text, font, fontSize);
 }
 
-void TextBox::updateScore(int score)
+const std::string& TextBox::getString() const
 {
-	TextBox::text.setString(name + std::to_string(score));
+	return text.getString();
 }
 
-void TextBox::centerText()
+bool TextBox::getClicked() const
 {
-	centerText(*this, text);
-}
-
-const std::string& TextBox::getName() const
-{
-	return name;
+	return clicked;
 }

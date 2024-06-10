@@ -1,54 +1,19 @@
 #include "Board.h"
 
-//Board::Board()
-//{
-//	assert(font.loadFromFile("opensans.ttf"));
-//
-//}
+Board::Board()
+{
+}
 
 Board::Board(const std::vector<DisplayCard>& cardVector)
 	: cardVec(cardVector)
 {
-	assert(font.loadFromFile("opensans.ttf"));
 	setBoard();
-	//main();
 }	
 
-void Board::main()
+void Board::create(const std::vector<DisplayCard>& cardVector)
 {
-
-	int iterations = 650;
-	int handMatches = 0;
-	for (int i = 0; i < iterations; i++)
-	{
-		cardHand.drawHand(deck);
-		//cardHand.setHand({ Card(JACK, CLUBS), Card(TEN, CLUBS), Card(QUEEN, CLUBS), Card(KING, CLUBS), Card(ACE, CLUBS) });
-		if (CardHandScorer::matchHand(cardHand, cardVec))
-		{
-			handMatches++;
-		}
-		scoreCard += CardHandScorer::scoreHand(cardHand);
-	}
-
-	for (int i = 0; i < handsText.size(); i++)
-	{
-		handsText[i].updateScore(scoreCard[i]);
-
-		if (scoreCard[i] == 0)
-		{
-			oddsText[i].setText("0 : " + std::to_string(iterations));
-		}
-		else
-		{
-			oddsText[i].setText("1 : " + std::to_string(iterations / scoreCard[i]));
-		}
-		oddsText[i].setPosition(oddsText[i].getPosition(), 1);
-	}
-	if(handMatches >= 1)
-		oddsText.back().setText("1 : " + std::to_string(iterations / handMatches));
-	else
-		oddsText.back().setText("0 : " + std::to_string(iterations));
-	oddsText.back().setPosition(oddsText.back().getPosition(), 1);
+	cardVec = cardVector;
+	setBoard();
 }
 
 void Board::update()
@@ -62,30 +27,30 @@ void Board::update()
 
 void Board::setBoard()
 {
-	handsText.push_back(TextBox("Royal Flush: ", font, { 300, 50 }));
-	handsText.push_back(TextBox("Straight Flush: ", font, { 300, 50 }));
-	handsText.push_back(TextBox("Four of a Kind: ", font, { 300, 50 }));
-	handsText.push_back(TextBox("Full House: ", font, { 300, 50 }));
-	handsText.push_back(TextBox("Flush: ", font, { 300, 50 }));
-	handsText.push_back(TextBox("Straight: ", font, { 300, 50 }));
-	handsText.push_back(TextBox("Three of a Kind: ", font, { 300, 50 }));
-	handsText.push_back(TextBox("Two Pair: ", font, { 300, 50 }));
-	handsText.push_back(TextBox("One Pair: ", font, { 300, 50 }));
-	handsText.push_back(TextBox("High Hand: ", font, { 300, 50 }));
+	handsText.push_back(ScoreBox("Royal Flush: ", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), {300, 50}));
+	handsText.push_back(ScoreBox("Straight Flush: ", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), { 300, 50 }));
+	handsText.push_back(ScoreBox("Four of a Kind: ", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), { 300, 50 }));
+	handsText.push_back(ScoreBox("Full House: ", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), { 300, 50 }));
+	handsText.push_back(ScoreBox("Flush: ", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), { 300, 50 }));
+	handsText.push_back(ScoreBox("Straight: ", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), { 300, 50 }));
+	handsText.push_back(ScoreBox("Three of a Kind: ", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), { 300, 50 }));
+	handsText.push_back(ScoreBox("Two Pair: ", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), { 300, 50 }));
+	handsText.push_back(ScoreBox("One Pair: ", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), { 300, 50 }));
+	handsText.push_back(ScoreBox("High Hand: ", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), { 300, 50 }));
 
 	for (auto& i : handsText)
 	{
-		oddsText.push_back(TextBox(" : ", font, { 300, 50 }));
+		oddsText.push_back(ScoreBox(" : ", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), { 300, 50 }));
 	}
-	oddsText.push_back(TextBox("...", font, { 300, 50 }));
+	oddsText.push_back(ScoreBox("...", Fonts::getFont(Fonts::OPEN_SANS_REGULAR), { 300, 50 }));
 
-	sf::Vector2f pos = { 50.0f, 50.0f };
+	sf::Vector2f pos = { 850.f, 0.0f };
 	for (int i = 0; i < getCardVec().size(); i++)
 	{
-		cardVec[i].getSprite().setPosition(pos);
+		cardVec[i].setPosition(pos);
 		pos.x += 150;
 	}
-	pos = { 50.0f, 200.0f };
+	pos = { 50.0f, 0.0f };
 	for (int i = 0; i < handsText.size(); i++)
 	{
 		handsText[i].setPosition(pos);
@@ -93,13 +58,13 @@ void Board::setBoard()
 		pos.y += 75;
 	}
 
-	pos = {400.0f, 200.0f};
+	pos = {400.0f, 0.0f};
 	for (int i = 0; i < oddsText.size() - 1; i++)
 	{
 		oddsText[i].setPosition(pos, 1);
 		pos.y += 75;
 	}
-	oddsText.back().setPosition({ 225.0f, 130.0f }, 1);
+	oddsText.back().setPosition({ 1050.0f, 130.0f }, 1);
 }
 
 void Board::checkHandMatch()
@@ -142,13 +107,12 @@ void Board::draw(sf::RenderTarget& window, sf::RenderStates states) const
 {
 	for (int i = 0; i < cardVec.size(); i++)
 	{
-		cardVec[i].PokerSpriteSheet::draw(window, states);
+		window.draw(cardVec[i]);
 	}
 	for (int i = 0; i < handsText.size(); i++)
 	{
 		handsText[i].draw(window, states);
 		oddsText[i].draw(window, states);
-		//displayHandOdds.draw(window, states);
 	}
 	oddsText.back().draw(window, states);
 }
