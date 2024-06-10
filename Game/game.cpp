@@ -1,17 +1,11 @@
 #include "Game.h"
 
-Game::Game()
+Game::Game(const sf::Vector2f& windowSize)
 {
-    //assert(font.loadFromFile("opensans.ttf"));
-
     out.open("game_save.txt", std::ios::app);
 
-    //window.create(sf::VideoMode(800, 600, 32), "Pokemon");
-    //window.setFramerateLimit(60);
-
-    //states.push(new GameState(&window, &states));
-    //states.push(new MainMenuState(window, &states));
-    //states.push(new TitleScreenState(window, &states));
+    states.push(new MainMenuState(windowSize, &states));
+    states.push(new TitleScreenState(windowSize, &states));
 }
 
 Game::Game(const Game& game)
@@ -19,19 +13,20 @@ Game::Game(const Game& game)
     *this = game;
 }
 
-Game::Game(sf::RenderWindow* window)
-{
-    Game::window = window;
-    out.open("game_save.txt", std::ios::app);
 
-    //states.push(new MainMenuState(window, &states));
-    //states.push(new TitleScreenState(window, &states));
-    states.push(new MainMenuState((sf::Vector2f)window->getSize(), &states));
-    states.push(new TitleScreenState((sf::Vector2f)window->getSize(), &states));
-}
+//Game::Game(sf::RenderWindow* window)
+//{
+//    Game::window = window;
+//    out.open("game_save.txt", std::ios::app);
+//
+//    //states.push(new MainMenuState(window, &states));
+//    //states.push(new TitleScreenState(window, &states));
+//    states.push(new MainMenuState((sf::Vector2f)window->getSize(), &states));
+//    states.push(new TitleScreenState((sf::Vector2f)window->getSize(), &states));
+//}
 
 
-void Game::eventHandler(sf::RenderWindow& window, sf::Event event, float dt)
+void Game::eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad)
 {
     while (window.pollEvent(event))
     {
@@ -44,11 +39,11 @@ void Game::eventHandler(sf::RenderWindow& window, sf::Event event, float dt)
     }
 }
 
-void Game::update()
+void Game::update(float dt)
 {
-    dt = clock.restart().asSeconds();
+    //dt = clock.restart().asSeconds();
 
-    eventHandler(*window, event, dt);
+    //eventHandler(*window, event, dt);
 
     if (!states.empty())
     {
@@ -60,42 +55,52 @@ void Game::update()
             states.pop();
         }
     }
-    else
+    /*else
     {
         closeGame();
-    }
+    }*/
 }
 
-void Game::render()
+//void Game::render()
+//{
+//    window->clear();
+//    
+//    if (!states.empty())
+//    {
+//        //states.top()->render(*window, renderStates);
+//        window->draw(*states.top());
+//    }
+//
+//    window->display();
+//}
+
+void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    window->clear();
-    
-    if (!states.empty())
+    if (!this->states.empty())
     {
-        states.top()->render(*window, renderStates);
+        //states.top()->render(*window, renderStates);
+        target.draw(*(this->states).top());
     }
-
-    window->display();
 }
 
-void Game::run()
-{
-    while (window->isOpen()) 
-    {
-        update();
-        render();
-    }
+//void Game::run()
+//{
+//    while (window->isOpen()) 
+//    {
+//        update();
+//        render();
+//    }
+//
+//}
 
-}
-
-void Game::closeGame()
-{
-    window->close();
-}
+//void Game::closeGame()
+//{
+//    window->close();
+//}
 
 Game& Game::operator=(const Game& game)
 {
-    this->window = game.window;
+    //this->window = game.window;
     this->states = game.states;
     return *this;
 }

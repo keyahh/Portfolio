@@ -76,6 +76,11 @@ void Portfolio::render()
 	window.display();
 }
 
+sf::RenderTexture* Portfolio::getDisplayPtr()
+{
+	return &texture;
+}
+
 void Portfolio::init()
 {
 	setupIter();

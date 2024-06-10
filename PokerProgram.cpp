@@ -3,8 +3,7 @@
 
 PokerProgram::PokerProgram()
 {
-	//std::vector<DisplayCard> royalFlush = { DisplayCard(TEN, CLUBS), DisplayCard(JACK, CLUBS), DisplayCard(QUEEN, CLUBS), DisplayCard(KING, CLUBS), DisplayCard(ACE, CLUBS) };
-	board.create(royalFlush);
+
 }
 
 PokerProgram::PokerProgram(const std::vector<DisplayCard>& hand)

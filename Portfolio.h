@@ -36,6 +36,7 @@ public:
     void addProgram(Program& program);
     void eventHandler(sf::RenderWindow& window, sf::Event event);
     void render();
+    sf::RenderTexture* getDisplayPtr();
 };
 
 #endif

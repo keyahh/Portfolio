@@ -221,7 +221,7 @@ void GameState::update(float dt)
 	////////////////////////////////////
 	//window->setView(playerCamera); moved to draw function
 	this->dt = dt;
-	//player->update(dt, window, playerCamera);
+	player->update(dt);
 
 	moveLives();
 	if (lives <= 0)
@@ -241,7 +241,7 @@ void GameState::entityLifeCycleLoop(float dt)
 	for (int i = entities.size() - 1; i >= 0; i--)
 	{
 		/////////////////////////////////////////
-		//entities[i]->update(dt, window, playerCamera);
+		entities[i]->update(dt);
 
 		if (getDistance(player, entities[i]) >= 600 && entities[i]->getType() != EntityType::PLANET) //remove asteroids and bullets that are too far away from player
 			entities[i]->kill();
@@ -311,14 +311,13 @@ void GameState::particlesLoop(float dt)
 
 void GameState::render(sf::RenderWindow& window, sf::RenderStates states)
 {
-	player->update(dt, window, playerCamera);
 	window.setView(playerCamera);
 	window.draw(*player);
 	window.draw(scoreBoard);
+
 	for (auto& i : entities)
 	{
 		window.draw(*i);
-		i->update(dt, window, playerCamera);
 	}
 
 	for (auto& i : particles)
@@ -339,8 +338,46 @@ void GameState::render(sf::RenderWindow& window, sf::RenderStates states)
 	}
 }
 
+void GameState::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	target.setView(playerCamera);
+	target.draw(*player);
+	target.draw(scoreBoard);
+
+	for (auto& i : entities)
+	{
+		target.draw(*i);
+	}
+
+	for (auto& i : particles)
+	{
+		target.draw(*i);
+	}
+
+	if (livesVec.size() > 0)
+	{
+		for (auto& i : livesVec)
+		{
+			target.draw(i);
+		}
+	}
+	if (lives <= 0)
+	{
+		target.draw(deathText);
+	}
+}
+
 void GameState::eventHandler(sf::RenderWindow& window, sf::Event& event, float dt)
 {
+	//setting rotation of player
+	if(lives > 0)
+	{
+		sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+		sf::Vector2f inViewPos = window.mapPixelToCoords({ mousePos.x, mousePos.y }, playerCamera);
+		rotation = (atan2(inViewPos.y - player->getPosition().y, inViewPos.x - player->getPosition().x) * (180.f / 3.141593f)) + 90.f;
+		player->setRotation(rotation);
+	}
+
 	if (player->checkShot())
 	{
 		entities.push_back(new Bullet(Textures::getTexture(Textures::BULLET), player->getRotation(), player->getPosition(), true));

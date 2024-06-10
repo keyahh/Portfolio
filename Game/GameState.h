@@ -28,6 +28,7 @@ private:
 	sf::Text deathText;
 
 	float asteroidSpawnTime = 2.5, asteroidSpawnTimeProgress = 4.5, dt;
+	float rotation; //for player
 
 	int rngRangeNeg(int min, int max);
 	void setNewGame();
@@ -60,6 +61,7 @@ public:
 
 	virtual void update(float dt);
 	virtual void render(sf::RenderWindow& window, sf::RenderStates states);
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 	virtual void eventHandler(sf::RenderWindow& window, sf::Event& event, float dt);
 	virtual void close();

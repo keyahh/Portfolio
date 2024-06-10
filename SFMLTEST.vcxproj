@@ -146,6 +146,7 @@
     <ClCompile Include="Calculator\Postfix.cpp" />
     <ClCompile Include="Calculator\RPN.cpp" />
     <ClCompile Include="Calculator\Term.cpp" />
+    <ClCompile Include="GameProgram.cpp" />
     <ClCompile Include="Game\AnimatedSpriteSheet.cpp" />
     <ClCompile Include="Game\Animation.cpp" />
     <ClCompile Include="Game\Asteroid.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="Calculator\Postfix.h" />
     <ClInclude Include="Calculator\RPN.h" />
     <ClInclude Include="Calculator\Term.h" />
+    <ClInclude Include="GameProgram.h" />
     <ClInclude Include="Game\AnimatedSpriteSheet.h" />
     <ClInclude Include="Game\Animation.h" />
     <ClInclude Include="Game\Asteroid.h" />

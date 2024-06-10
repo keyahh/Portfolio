@@ -1,18 +1,14 @@
-#ifndef POKERPROGRAMH
-#define POKERPROGRAMH
+#ifndef GAMEPROGRAM
+#define GAMEPROGRAM
 
 #include "Program.h"
-#include "Poker/Board.h"
+#include "Game/game.h"
 
-class PokerProgram : public Program
+class GameProgram : public Program
 {
-
 private:
-	Board board;
-
+    Game game;
 public:
-    PokerProgram();
-    PokerProgram(const std::vector<DisplayCard>& hand);
     virtual void eventHandler(sf::RenderWindow& window, sf::Event event, float dt, int pad);
     virtual void update(float dt);
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

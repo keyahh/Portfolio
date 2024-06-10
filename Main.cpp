@@ -3,6 +3,7 @@
 #include "GridProgram.h"
 #include "PokerProgram.h"
 #include "CalculatorProgram.h"
+#include "GameProgram.h"
 
 int main()
 {
@@ -13,11 +14,13 @@ int main()
 	GridProgram gp;
 	CalculatorProgram c;
 	PokerProgram pk(royalFlush);
+	GameProgram g;
 
 	p.addProgram(bbp);
 	p.addProgram(gp);
 	p.addProgram(pk);
 	p.addProgram(c);
+	p.addProgram(g);
 
 	p.run();
 
