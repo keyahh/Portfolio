@@ -179,7 +179,6 @@ void GameState::hitPlanet(Entity* planet, Entity* bullet)
 	planet->hit();
 	if (planet->getCanKill())
 	{
-		//big explosion
 		particles.push_back(new BigExplosion(Textures::getTexture(Textures::BIG_EXPLOSION), { planet->getPosition().x - 175, planet->getPosition().y - 175 }));
 		score += planet->getValue();
 	}
@@ -192,8 +191,8 @@ void GameState::summonUFO()
 	std::cout << "summon ufo\n";
 	float randXPos = player->getPosition().x + rngRangeNeg(500, 600);
 	float randYPos = player->getPosition().y + rngRangeNeg(500, 600);
-	//entities.push_back(new Ufo(Textures::getTexture(Textures::UFO), { randXPos, randYPos }));
-	entities.push_back(new Ufo(Textures::getTexture(Textures::UFO), { 0.f, 0.f }));
+	entities.push_back(new Ufo(Textures::getTexture(Textures::UFO), { randXPos, randYPos }));
+	//entities.push_back(new Ufo(Textures::getTexture(Textures::UFO), { 0.f, 0.f }));
 }
 
 float GameState::getDistance(Entity* entity1, Entity* entity2)
