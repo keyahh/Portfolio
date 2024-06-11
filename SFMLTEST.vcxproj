@@ -164,7 +164,7 @@
     <ClCompile Include="Game\State.cpp" />
     <ClCompile Include="Game\TextBox.cpp" />
     <ClCompile Include="Game\TitleScreenState.cpp" />
-    <ClCompile Include="Game\UFO.cpp" />
+    <ClCompile Include="Game\Ufo.cpp" />
     <ClCompile Include="GridProgram.cpp" />
     <ClCompile Include="Grid\SFMLGrid.cpp" />
     <ClCompile Include="Helper\Button.cpp" />
@@ -216,7 +216,7 @@
     <ClInclude Include="Game\State.h" />
     <ClInclude Include="Game\TextBox.h" />
     <ClInclude Include="Game\TitleScreenState.h" />
-    <ClInclude Include="Game\UFO.h" />
+    <ClInclude Include="Game\Ufo.h" />
     <ClInclude Include="GridProgram.h" />
     <ClInclude Include="Grid\SFMLGrid.h" />
     <ClInclude Include="Helper\Button.h" />

@@ -18,8 +18,10 @@ public:
         SPLASH_SCREEN,
         MENU_ART,
         BIG_EXPLOSION,
+        UFO,
         DECK
     };
+
     static sf::Texture* getTexture(textureEnum texture);
 private:
     inline static std::map<textureEnum, sf::Texture> textures;

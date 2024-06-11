@@ -36,6 +36,8 @@ GameState::GameState(const sf::Vector2f& windowSize, std::stack<State*>* states,
 	}
 
 	summonPlanets();
+	//entities.push_back(new Ufo(Textures::getTexture(Textures::UFO), { 0.f, 0.f }));
+
 }
 
 void GameState::setNewGame()
@@ -70,7 +72,7 @@ void GameState::loadFromFile()
 	score = std::stoi(data);
 	getline(in, data);
 	lives = std::stoi(data);
-	
+
 	in.close();
 
 	sf::Vector2f playerPos = { x, y };
@@ -96,7 +98,7 @@ void GameState::setLives()
 
 void GameState::moveLives()
 {
-	sf::Vector2f startPos = { scoreBoard.getPosition().x, scoreBoard.getPosition().y + 50};
+	sf::Vector2f startPos = { scoreBoard.getPosition().x, scoreBoard.getPosition().y + 50 };
 	if (!livesVec.empty())
 	{
 		for (auto& i : livesVec)
@@ -121,14 +123,14 @@ int GameState::rngRangeNeg(int min, int max)
 
 void GameState::setPlanet()
 {
-	float randXPos = rngRangeNeg(300, 2000);
-	float randYPos = rngRangeNeg(300, 2000);
-	entities.push_back(new Planet(Textures::getTexture(Textures::PLANETS), {randXPos, randYPos}, rand() % 3, rand() % 4));
+	float randXPos = rand() % 6000 - 3000;
+	float randYPos = rand() % 6000 - 3000;
+	entities.push_back(new Planet(Textures::getTexture(Textures::PLANETS), { randXPos, randYPos }, rand() % 3, rand() % 4));
 }
 
 void GameState::summonPlanets()
 {
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 30; i++)
 	{
 		setPlanet();
 	}
@@ -136,15 +138,15 @@ void GameState::summonPlanets()
 
 void GameState::setAsteroid()
 {
-	float randXPos = player->getPosition().x + rngRangeNeg(200, 300);
-	float randYPos = player->getPosition().y + rngRangeNeg(200, 300);
+	float randXPos = player->getPosition().x + rngRangeNeg(200, 700);
+	float randYPos = player->getPosition().y + rngRangeNeg(200, 700);
 
-	entities.push_back(new Asteroid(Textures::getTexture(Textures::ASTEROID_LARGE), 50, rand() % 360, {randXPos, randYPos }));
+	entities.push_back(new Asteroid(Textures::getTexture(Textures::ASTEROID_LARGE), 50, rand() % 360, { randXPos, randYPos }));
 }
 
 void GameState::summonAsteroids()
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		setAsteroid();
 	}
@@ -185,6 +187,15 @@ void GameState::hitPlanet(Entity* planet, Entity* bullet)
 	particles.push_back(new Explosion(Textures::getTexture(Textures::EXPLOSION), bullet->getPosition()));
 }
 
+void GameState::summonUFO()
+{
+	std::cout << "summon ufo\n";
+	float randXPos = player->getPosition().x + rngRangeNeg(500, 600);
+	float randYPos = player->getPosition().y + rngRangeNeg(500, 600);
+	//entities.push_back(new Ufo(Textures::getTexture(Textures::UFO), { randXPos, randYPos }));
+	entities.push_back(new Ufo(Textures::getTexture(Textures::UFO), { 0.f, 0.f }));
+}
+
 float GameState::getDistance(Entity* entity1, Entity* entity2)
 {
 	return std::sqrtf(pow(entity2->getPosition().x - entity1->getPosition().x, 2) + pow(entity2->getPosition().y - entity1->getPosition().y, 2));
@@ -208,7 +219,7 @@ void GameState::hitPlayer()
 void GameState::die()
 {
 	player->setCanMove(false);
-	deathText.setPosition({player->getPosition().x - deathText.getGlobalBounds().width / 2, player->getPosition().y - 150.f});
+	deathText.setPosition({ player->getPosition().x - deathText.getGlobalBounds().width / 2, player->getPosition().y - 150.f });
 }
 
 
@@ -218,9 +229,8 @@ void GameState::update(float dt)
 	scoreBoard.setPosition({ player->getPosition().x - windowSize.x / 2 + 10, player->getPosition().y - windowSize.y / 2 + 10 });
 	playerCamera.setCenter(player->getPosition());
 
-	////////////////////////////////////
-	//window->setView(playerCamera); moved to draw function
 	this->dt = dt;
+
 	player->update(dt);
 
 	moveLives();
@@ -232,6 +242,7 @@ void GameState::update(float dt)
 	particlesLoop(dt);
 	entityLifeCycleLoop(dt);
 	asteroidsLoop(dt);
+	ufoLoop(dt);
 	collisionLoop();
 
 }
@@ -240,14 +251,36 @@ void GameState::entityLifeCycleLoop(float dt)
 {
 	for (int i = entities.size() - 1; i >= 0; i--)
 	{
-		/////////////////////////////////////////
 		entities[i]->update(dt);
 
-		if (getDistance(player, entities[i]) >= 600 && entities[i]->getType() != EntityType::PLANET) //remove asteroids and bullets that are too far away from player
+		if (entities[i]->getType() == EntityType::UFO)
+		{
+			ufoMain(entities[i]);
+		}
+
+		if (getDistance(player, entities[i]) >= 1000 && entities[i]->getType() != EntityType::PLANET) //remove asteroids and bullets that are too far away from player
 			entities[i]->kill();
 
 		if (entities[i]->getCanKill()) //destroy entities marked to be killed
 			entities.erase(entities.begin() + i);
+	}
+}
+
+void GameState::ufoMain(Entity* ufo)
+{
+	float radian = atan2(player->getPosition().y - ufo->getPosition().y, player->getPosition().x - ufo->getPosition().x);
+	float rota;
+
+	if (getDistance(ufo, player) > 200.f)
+	{
+		ufo->move({ cos(radian), sin(radian) }, dt);
+	}
+
+	if (getDistance(ufo, player) <= 700.f && ufo->getCanShoot())
+	{
+		rota = radian * (180.f / 3.141593f) + 90.f;
+		entities.push_back(new Bullet(Textures::getTexture(Textures::BULLET), rota, ufo->getPosition(), false));
+		ufo->setCanShoot(false);
 	}
 }
 
@@ -257,7 +290,17 @@ void GameState::asteroidsLoop(float dt)
 	if (asteroidSpawnTimeProgress >= asteroidSpawnTime)
 	{
 		summonAsteroids();
-		asteroidSpawnTimeProgress = 0;
+		asteroidSpawnTimeProgress = 0.f;
+	}
+}
+
+void GameState::ufoLoop(float dt)
+{
+	ufoSpawnTimeProgress += dt;
+	if (ufoSpawnTimeProgress >= ufoSpawnTime)
+	{
+		summonUFO();
+		ufoSpawnTimeProgress = 0.f;
 	}
 }
 
@@ -267,20 +310,46 @@ void GameState::collisionLoop()
 	{
 		for (int j = entities.size() - 1; j >= 0; j--)
 		{
-			if (i != j && entities[i]->getType() == BULLET && (entities[j]->getType() == ASTEROID_LARGE || entities[j]->getType() == ASTEROID_MEDIUM || entities[j]->getType() == ASTEROID_SMALL))
+			if (i != j && entities[i]->getType() == BULLET && entities[i]->getValue() != -100)
 			{
-				if (getDistance(entities[i], entities[j]) <= 25.0f)
+				switch (entities[j]->getType())
 				{
-					killAsteroid(entities[j], entities[i]);
-					entities[i]->kill();
-				}
-			}
-			else if (i != j && entities[i]->getType() == BULLET && entities[j]->getType() == PLANET)
-			{
-				if (getDistance(entities[i], entities[j]) <= entities[j]->getGlobalBounds().width / 3)
-				{
-					hitPlanet(entities[j], entities[i]);
-					entities[i]->kill();
+				case (ASTEROID_LARGE):
+					if (getDistance(entities[i], entities[j]) <= 28.0f)
+					{
+						killAsteroid(entities[j], entities[i]);
+						entities[i]->kill();
+					}
+					break;
+				case(ASTEROID_MEDIUM):
+					if (getDistance(entities[i], entities[j]) <= 27.0f)
+					{
+						killAsteroid(entities[j], entities[i]);
+						entities[i]->kill();
+					}
+					break;
+				case(ASTEROID_SMALL):
+					if (getDistance(entities[i], entities[j]) <= 25.0f)
+					{
+						killAsteroid(entities[j], entities[i]);
+						entities[i]->kill();
+					}
+					break;
+				case(PLANET):
+					if (getDistance(entities[i], entities[j]) <= entities[j]->getGlobalBounds().width / 3)
+					{
+						hitPlanet(entities[j], entities[i]);
+						entities[i]->kill();
+					}
+					break;
+
+				case(UFO):
+					if (getDistance(entities[i], entities[j]) <= 25.0f)
+					{
+						killAsteroid(entities[j], entities[i]);
+						entities[i]->kill();
+					}
+					break;
 				}
 			}
 			else
@@ -290,6 +359,14 @@ void GameState::collisionLoop()
 		{
 			if (getDistance(player, entities[i]) <= 35.f)
 			{
+				hitPlayer();
+			}
+		}
+		else if (!player->getInvul() && (entities[i]->getType() == BULLET && entities[i]->getValue() == -100)) //enemy bullet collision
+		{
+			if (getDistance(player, entities[i]) <= 35.f)
+			{
+				entities[i]->kill();
 				hitPlayer();
 			}
 		}
@@ -309,40 +386,10 @@ void GameState::particlesLoop(float dt)
 	}
 }
 
-void GameState::render(sf::RenderWindow& window, sf::RenderStates states)
-{
-	window.setView(playerCamera);
-	window.draw(*player);
-	window.draw(scoreBoard);
-
-	for (auto& i : entities)
-	{
-		window.draw(*i);
-	}
-
-	for (auto& i : particles)
-	{
-		window.draw(*i);
-	}
-
-	if (livesVec.size() > 0)
-	{
-		for (auto& i : livesVec)
-		{
-			window.draw(i);
-		}
-	}
-	if (lives <= 0)
-	{
-		window.draw(deathText);
-	}
-}
-
 void GameState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.setView(playerCamera);
 	target.draw(*player);
-	target.draw(scoreBoard);
 
 	for (auto& i : entities)
 	{
@@ -361,6 +408,8 @@ void GameState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 			target.draw(i);
 		}
 	}
+	target.draw(scoreBoard);
+
 	if (lives <= 0)
 	{
 		target.draw(deathText);
@@ -370,7 +419,7 @@ void GameState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void GameState::eventHandler(sf::RenderWindow& window, sf::Event& event, float dt)
 {
 	//setting rotation of player
-	if(lives > 0)
+	if (lives > 0)
 	{
 		sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 		sf::Vector2f inViewPos = window.mapPixelToCoords({ mousePos.x, mousePos.y }, playerCamera);
@@ -422,6 +471,6 @@ void GameState::close()
 {
 	saveGame();
 	clearEntities();
-	
+
 	canClose = true;
 }

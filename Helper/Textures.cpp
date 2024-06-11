@@ -49,5 +49,8 @@ std::string Textures::getTexturePath(textureEnum texture)
     case DECK:
         return "images/Deck.png";
         break;
+    case UFO:
+        return "images/entities/ufo.png";
+        break;
     }
 }

@@ -19,24 +19,9 @@ void TitleScreenState::update(float dt)
 	startButton.update(dt);
 }
 
-void TitleScreenState::update(sf::RenderTarget& target, float dt)
-{
-	startButton.update(dt);
-
-	if (startButton.getClicked())
-	{
-		close();
-	}
-}
-
-void TitleScreenState::render(sf::RenderWindow& window, sf::RenderStates states)
-{
-	window.draw(rect);
-	window.draw(startButton);
-}
-
 void TitleScreenState::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	target.setView(target.getDefaultView());
 	target.draw(rect);
 	target.draw(startButton);
 }

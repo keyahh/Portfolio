@@ -3,14 +3,21 @@
 
 #include "Entity.h"
 
-class UFO : public Entity
+class Ufo : public Entity
 {
-public:
-	UFO();
-	UFO(sf::Texture* texture, const sf::Vector2f& startPos);
+private:
+	int value = 100;
+	float shootCD = 0.6f, shootCDTime = 0.f;
+	bool canShoot = false;
 
-	virtual void update(float dt, sf::RenderWindow& window, sf::View& view);
+public:
+	Ufo();
+	Ufo(sf::Texture* texture, const sf::Vector2f& startPos);
+
+	virtual void update(float dt);
 	virtual const int getValue() const;
+	virtual bool getCanShoot() const;
+	virtual void setCanShoot(bool flag);
 };
 
 #endif
