@@ -488,7 +488,7 @@ GameState& GameState::operator=(const GameState& gameState)
 	this->states = gameState.states;
 	this->particles = gameState.particles;
 	this->player = gameState.player;
-
+	return *this;
 }
 
 GameState::~GameState()
