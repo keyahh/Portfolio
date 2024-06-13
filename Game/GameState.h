@@ -47,6 +47,7 @@ private:
 	void entityLifeCycleLoop(float dt);
 	void killAsteroid(Entity* asteroid, Entity* bullet);
 	void hitPlanet(Entity* planet, Entity* bullet);
+	void setUFO();
 	void summonUFO();
 	void ufoMain(Entity* ufo);
 
@@ -67,6 +68,9 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	virtual void eventHandler(sf::RenderWindow& window, sf::Event& event, float dt);
 	virtual void close();
+
+	GameState& operator =(const GameState& gameState);
+	~GameState();
 
 };
 

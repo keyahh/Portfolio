@@ -186,13 +186,20 @@ void GameState::hitPlanet(Entity* planet, Entity* bullet)
 	particles.push_back(new Explosion(Textures::getTexture(Textures::EXPLOSION), bullet->getPosition()));
 }
 
-void GameState::summonUFO()
+void GameState::setUFO()
 {
-	std::cout << "summon ufo\n";
 	float randXPos = player->getPosition().x + rngRangeNeg(500, 600);
 	float randYPos = player->getPosition().y + rngRangeNeg(500, 600);
 	entities.push_back(new Ufo(Textures::getTexture(Textures::UFO), { randXPos, randYPos }));
-	//entities.push_back(new Ufo(Textures::getTexture(Textures::UFO), { 0.f, 0.f }));
+}
+
+void GameState::summonUFO()
+{
+	//float randXPos = player->getPosition().x + rngRangeNeg(500, 600);
+	for (int i = 0; i < 2; i++)
+	{
+		setUFO();
+	}
 }
 
 float GameState::getDistance(Entity* entity1, Entity* entity2)
@@ -422,7 +429,7 @@ void GameState::eventHandler(sf::RenderWindow& window, sf::Event& event, float d
 	{
 		sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 		sf::Vector2f inViewPos = window.mapPixelToCoords({ mousePos.x, mousePos.y }, playerCamera);
-		rotation = (atan2(inViewPos.y - player->getPosition().y, inViewPos.x - player->getPosition().x) * (180.f / 3.141593f)) + 90.f;
+		rotation = (atan2(inViewPos.y  - player->getPosition().y - 200.f, inViewPos.x - player->getPosition().x - 200.f) * (180.f / 3.141593f)) + 90.f;
 		player->setRotation(rotation);
 	}
 
@@ -436,7 +443,9 @@ void GameState::eventHandler(sf::RenderWindow& window, sf::Event& event, float d
 		saveGame();
 		clearEntities();
 		states->pop();
+		/////
 		window.setView(window.getDefaultView());
+		/////
 		states->push(new MainMenuState(windowSize, states));
 		states->push(new TitleScreenState(windowSize, states));
 	}
@@ -472,4 +481,17 @@ void GameState::close()
 	clearEntities();
 
 	canClose = true;
+}
+
+GameState& GameState::operator=(const GameState& gameState)
+{
+	this->states = gameState.states;
+	this->particles = gameState.particles;
+	this->player = gameState.player;
+
+}
+
+GameState::~GameState()
+{
+	close();
 }
